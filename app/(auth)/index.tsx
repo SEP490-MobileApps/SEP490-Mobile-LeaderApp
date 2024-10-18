@@ -1,17 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import FormField from "@/components/FormField";
-import CustomButton from "@/components/CustomButton";
+import FormField from "@/components/custom_components/FormField";
+import CustomButton from "@/components/custom_components/CustomButton";
 import { Text, View } from "react-native";
 import { Checkbox } from "@ant-design/react-native";
 import { router } from "expo-router";
 
 
 const signIn = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  
+
+  const submit = async () =>{
+    router.replace('/(tabs)/home')
+  }
+
   return (
-    <SafeAreaView className="w-full justify-center h-full px-4">
+    <SafeAreaView className="w-full h-full mt-20 px-4">
       <View className="mb-10">
-        <Text className="text-3xl font-semibold text-center">Xin chào bạn,</Text>
+        <Text className="text-3xl font-semibold text-center mb-5">Xin chào bạn,</Text>
         <Text className="text-xl text-gray-400 text-center">Hãy Đăng Nhập Để Quản Lí Công Việc</Text>
       </View>
       
@@ -45,9 +52,9 @@ const signIn = () => {
 
       <CustomButton
             title="Đăng nhập"
-            // handlePress={submit}
+            handlePress={submit}
             containerStyles="mt-7 mt-14"
-            // isLoading={isSubmitting}
+            isLoading={isSubmitting}
       />
       
     </SafeAreaView>

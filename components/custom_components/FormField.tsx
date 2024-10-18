@@ -1,6 +1,16 @@
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
 import { AntDesign, Entypo } from "@expo/vector-icons";
+import { TextInputProps } from "@ant-design/react-native/lib/input-item";
+
+interface FormFieldProps extends TextInputProps {
+  title: string;
+  values?: string;
+  placeholder: string;
+  handleChangeText?: (text: string) => void;
+  otherStyles?: string;
+  icon?: React.ReactNode;
+}
 
 const FormField = ({
   title,
@@ -10,7 +20,7 @@ const FormField = ({
   otherStyles,
   icon,
   ...props
-}: any) => {
+}: FormFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
