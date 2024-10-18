@@ -8,6 +8,7 @@ import 'react-native-reanimated';
 
 import { useColorScheme } from '@/components/useColorScheme';
 
+
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -59,11 +60,16 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack initialRouteName='(auth)'>
-        <Stack.Screen name="index" options={{ headerShown: false }}/>
+
+      <Stack initialRouteName='(auth)' screenOptions={{headerShown: false,}}>
+        {/* <Stack.Screen name="index" options={{ headerShown: false }}/> */}
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="/search/[SearchQuery]" options={{ headerShown: false }} />
+        <Stack.Screen name="/productDetail/[ProductId]" options={{ headerShown: false }} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
+
     </ThemeProvider>
   );
 }
