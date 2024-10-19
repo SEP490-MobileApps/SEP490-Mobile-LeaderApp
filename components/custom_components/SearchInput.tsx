@@ -22,10 +22,10 @@ import {
     ...props
   }) => {
     const pathname = usePathname();
-    const [query, setQuery] = useState(initialQuery);
+    const [SearchQuery, setSearchQuery] = useState(initialQuery);
   
     const handleSearch = () => {
-      if (!query.trim()) {
+      if (!SearchQuery.trim()) {
         return Alert.alert(
           "You didn't type anything",
           "Please enter a search term"
@@ -33,9 +33,9 @@ import {
       }
   
       if (pathname.startsWith("/search")) {
-        router.setParams({ query });
+        router.setParams({ SearchQuery });
       } else {
-        router.push(`/search/${query}`);
+        router.push(`/search/${SearchQuery}`);
       }
     };
   
@@ -47,10 +47,10 @@ import {
 
         <TextInput
           className=" flex-1 text-black font-pregular text-base"
-          value={query}
+          value={SearchQuery}
           placeholder={placeholder}
           placeholderTextColor="#6C757D"
-          onChangeText={(text) => setQuery(text)}
+          onChangeText={(text) => setSearchQuery(text)}
           {...props} 
         />
                 <TouchableOpacity onPress={handleSearch}>

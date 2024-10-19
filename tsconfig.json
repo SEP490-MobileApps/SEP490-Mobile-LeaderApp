@@ -12,5 +12,5 @@
     "**/*.ts",
     "**/*.tsx",
     "nativewind-env.d.ts"
-, "components/custom_components/RenderProductItem.tsx"  ]
+, "components/custom_components/RenderProductItem.tsx", "context/GlobalProvider.tsx"  ]
 }
