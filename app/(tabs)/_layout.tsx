@@ -17,9 +17,9 @@ export default function TabLayout() {
         tabBarShowLabel: false,
         tabBarActiveTintColor: "#3F72AF",
         tabBarInactiveTintColor: "#CDCDE0",
-        headerTintColor:"white",
         tabBarStyle: { height: 60, backgroundColor: "#DBE2EF" },
         headerStyle: {backgroundColor:"#4072AF"},
+        headerTintColor:"white",
         headerTitleAlign: "center", 
       }}
     >
