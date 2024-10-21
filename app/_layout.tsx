@@ -70,24 +70,7 @@ function RootLayoutNav() {
           <Stack initialRouteName="(auth)">
             <Stack.Screen name="(auth)" options={{ headerShown: false }} />
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            
-            <Stack.Screen
-              name="/search/[SearchQuery]"
-              options={{
-                headerTitle: "Vật tư điện nước",
-                headerStyle: { backgroundColor: "#4072AF" },
-                headerTintColor: "white",
-                headerTitleAlign: "center",
-              }}
-            />
-
-            <Stack.Screen
-              name="/productDetail/[ProductId]"
-              options={{
-
-              }}
-            />
-
+            <Stack.Screen name="/productDetail/[ProductId]" options={{}} />
             <Stack.Screen name="modal" options={{ presentation: "modal" }} />
           </Stack>
         </GestureHandlerRootView>

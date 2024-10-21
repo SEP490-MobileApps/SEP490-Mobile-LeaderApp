@@ -1,8 +1,8 @@
 import { View, Text, SafeAreaView, Image, FlatList } from "react-native";
 import React from "react";
-import { requests, user } from "@/constants/data";
+import { newRequests, user } from "@/constants/data";
 import Notificaton from "@/components/custom_components/Notificaton";
-import RenderRequestItem from "@/components/custom_components/RenderRequestItem";
+import RenderNewRequestItem from "@/components/custom_components/RenderNewRequestItem";
 
 const Home = () => {
     return (
@@ -22,7 +22,7 @@ const Home = () => {
   
         <Text className="text-center font-bold text-xl">Yêu Cầu Sửa Chữa Gần Đây</Text>
   
-        <RenderRequestItem requests={requests} />
+        <RenderNewRequestItem requests={newRequests} />
       </SafeAreaView>
     );
   };

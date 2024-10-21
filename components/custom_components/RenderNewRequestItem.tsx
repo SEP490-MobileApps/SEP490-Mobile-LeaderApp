@@ -1,14 +1,14 @@
-import { View, Text, SectionList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import React from "react";
 import { Request } from "@/model/request";
 import { formatDate } from "@/utils/utils";
 import StatusTag from "./StatusTag";
 
 interface RenderRequestItemProps {
-  sections: { title: string; data: Request[] }[];
+  requests: Request[];
 }
 
-const RenderRequestItem = ({ sections }: RenderRequestItemProps) => {
+const RenderNewRequestItem = ({ requests }: RenderRequestItemProps) => {
   const renderRequestItem = ({ item }: { item: Request }) => (
     <View className="border-b-[1px] border-black py-4 mb-5">
       <Text className="text-lg font-semibold mb-3" numberOfLines={1}>
@@ -32,20 +32,13 @@ const RenderRequestItem = ({ sections }: RenderRequestItemProps) => {
     </View>
   );
 
-  const renderSectionHeader = ({ section }: { section: { title: string } }) => (
-    <View className="p-8">
-      <Text className="text-2xl font-bold text-center">{section.title}</Text>
-    </View>
-  );
-
   return (
-    <SectionList
-      sections={sections}
+    <FlatList
+      data={requests}
       renderItem={renderRequestItem}
-      renderSectionHeader={renderSectionHeader}
-      keyExtractor={(item) => item.RequestId}
+      keyExtractor={(item) => item.Customer.RoomId}
     />
   );
 };
 
-export default RenderRequestItem;
+export default RenderNewRequestItem;
