@@ -1,12 +1,12 @@
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView } from "react-native";
 import React from "react";
-import { requests } from "@/constants/data";
 import RenderRequestItem from "@/components/custom_components/RenderRequestItem";
 import CustomButton from "@/components/custom_components/CustomButton";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View } from "@/components/Themed";
 import CustomSheet from "@/components/custom_components/RequestSheet";
-import { useGlobalState } from "../../context/GlobalProvider"; 
+import { useGlobalState } from "../../context/GlobalProvider";
+import { newRequests, inProgressRequests, completedRequests, cancelledRequests } from "@/constants/data"; 
 
 const Request = () => {
   const { setIsRequestOpen } = useGlobalState();
@@ -14,6 +14,26 @@ const Request = () => {
   const handleOpenPress = () => {
     setIsRequestOpen(true);
   };
+
+  // Grouping requests by status into sections
+  const requests = [
+    {
+      title: "Yêu cầu mới",
+      data: newRequests,
+    },
+    {
+      title: "Đang thực hiện",
+      data: inProgressRequests,
+    },
+    {
+      title: "Hoàn thành",
+      data: completedRequests,
+    },
+    {
+      title: "Hủy bỏ",
+      data: cancelledRequests,
+    },
+  ];
 
   return (
     <SafeAreaView className="w-full h-full mt-5 px-4">
@@ -26,8 +46,10 @@ const Request = () => {
           />
         </View>
       </View>
-      <RenderRequestItem requests={requests} />
-      <CustomSheet/>
+
+      {/* Passing the requests sections to RenderRequestItem */}
+      <RenderRequestItem sections={requests} />
+      <CustomSheet />
     </SafeAreaView>
   );
 };

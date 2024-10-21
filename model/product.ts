@@ -4,6 +4,7 @@ export interface Product {
     Description: string;
     ImageUrl: string;
     In_Of_Stock: number;
+    WarrantyMonths: number;
     ProductPrices: {
         PriceByDate: number
     }

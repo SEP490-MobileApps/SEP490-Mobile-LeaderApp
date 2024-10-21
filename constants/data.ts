@@ -1,3 +1,5 @@
+import { Product } from "@/model/product";
+import { Request } from "@/model/request";
 import { User } from "@/model/user";
 
 export const user: User = {
@@ -9,47 +11,62 @@ export const user: User = {
     Role: "Leader"
 };
 
-import { Request } from "@/model/request";
-import { Product } from "@/model/product";
 
-export const requests: Request[] = [
-    {
-      RequestId: "1",
-      CustomerProblem: "Water leakage in bathroom",
-      Start: "2024-10-15T09:00:00Z",
-      Customer: {
-        RoomId: "A102",
-      },
-      Status: "Yêu Cầu Mới", // Changed to "New Request"
+
+// Requests with "New Request" status
+export const newRequests: Request[] = [
+  {
+    RequestId: "1",
+    CustomerProblem: "Water leakage in bathroom",
+    Start: "2024-10-15T09:00:00Z",
+    Customer: {
+      RoomId: "A102",
     },
-    {
-      RequestId: "2",
-      CustomerProblem: "Electrical short circuit in kitchen",
-      Start: "2024-10-16T14:00:00Z",
-      Customer: {
-        RoomId: "B305",
-      },
-      Status: "Đang thực hiện", // Changed to "In Progress"
+    Status: "Yêu Cầu Mới", // New Request
+  },
+];
+
+// Requests with "In Progress" status
+export const inProgressRequests: Request[] = [
+  {
+    RequestId: "2",
+    CustomerProblem: "Electrical short circuit in kitchen",
+    Start: "2024-10-16T14:00:00Z",
+    Customer: {
+      RoomId: "B305",
     },
-    {
-      RequestId: "3",
-      CustomerProblem: "Air conditioner not cooling",
-      Start: "2024-10-17T10:30:00Z",
-      Customer: {
-        RoomId: "C204",
-      },
-      Status: "Hoàn thành", // Changed to "Completed"
+    Status: "Đang thực hiện", // In Progress
+  },
+];
+
+// Requests with "Completed" status
+export const completedRequests: Request[] = [
+  {
+    RequestId: "3",
+    CustomerProblem: "Air conditioner not cooling",
+    Start: "2024-10-17T10:30:00Z",
+    Customer: {
+      RoomId: "C204",
     },
-    {
-      RequestId: "4",
-      CustomerProblem: "Broken window in living room",
-      Start: "2024-10-18T08:00:00Z",
-      Customer: {
-        RoomId: "D101",
-      },
-      Status: "Hủy bỏ", // Changed to "Cancelled"
+    Status: "Hoàn thành", // Completed
+  },
+];
+
+export const cancelledRequests: Request[] = [
+  {
+    RequestId: "4",
+    CustomerProblem: "Broken window in living room",
+    Start: "2024-10-18T08:00:00Z",
+    Customer: {
+      RoomId: "D101",
     },
-  ];
+    Status: "Hủy bỏ", // Cancelled
+  },
+];
+
+// Requests with "Cancelled" status
+
+
 
   export const products: Product[] = [
     {
@@ -57,7 +74,8 @@ export const requests: Request[] = [
       Name: "Wireless Earbuds",
       Description: "High-quality noise-cancelling wireless earbuds with long battery life.",
       ImageUrl: "https://m.media-amazon.com/images/I/51Wwg4MvY8L.jpg",
-      In_Of_Stock: 5,
+      In_Of_Stock: 0,
+      WarrantyMonths: 2,
       ProductPrices: {
         PriceByDate: 100
     }
@@ -68,6 +86,7 @@ export const requests: Request[] = [
       Description: "Latest model with advanced camera features and fast processing.",
       ImageUrl: "https://m.media-amazon.com/images/I/51Wwg4MvY8L.jpg",
       In_Of_Stock: 10,
+      WarrantyMonths: 3,
       ProductPrices: {
         PriceByDate: 100
     }
@@ -78,6 +97,7 @@ export const requests: Request[] = [
       Description: "Powerful gaming laptop with a high refresh rate display and RGB lighting.",
       ImageUrl: "https://m.media-amazon.com/images/I/51Wwg4MvY8L.jpg",
       In_Of_Stock: 15,
+      WarrantyMonths: 4,
       ProductPrices: {
         PriceByDate: 100
     }
@@ -88,6 +108,7 @@ export const requests: Request[] = [
       Description: "Stylish smartwatch with health tracking features and customizable watch faces.",
       ImageUrl: "https://m.media-amazon.com/images/I/51Wwg4MvY8L.jpg",
       In_Of_Stock: 20,
+      WarrantyMonths: 5,
       ProductPrices: {
         PriceByDate: 100
     }
