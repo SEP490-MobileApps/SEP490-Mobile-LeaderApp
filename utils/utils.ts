@@ -7,3 +7,28 @@ export function formatDate(dateString: string): string {
     return `${day}/${month}/${year}`;
 }
 
+export const formatCurrency = (
+    amount: number | null | undefined,
+    locale: "vi-VN" = "vi-VN"
+  ) => {
+    let returnAmount = 0;
+  
+    if (amount === null || amount === undefined) {
+      return returnAmount.toLocaleString(locale, {
+        style: "currency",
+        currency: "VND",
+        currencyDisplay: "code" 
+      });
+    }
+  
+    if (locale === "vi-VN") {
+      returnAmount = amount * 1000;
+    }
+  
+    return returnAmount.toLocaleString(locale, {
+      style: "currency",
+      currency: "VND",
+      currencyDisplay: "code"
+    });
+  };
+  

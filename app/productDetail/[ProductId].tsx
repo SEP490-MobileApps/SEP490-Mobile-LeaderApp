@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, SafeAreaView } from 'react-native';
 import React, { useEffect } from 'react';
 import { useLocalSearchParams, useNavigation } from 'expo-router';
 import { Divider } from 'react-native-paper';
@@ -8,7 +8,6 @@ import { Product } from '@/model/product';
 const ProductDetail = () => {
   const params = useLocalSearchParams();
   const ProductId = params.ProductId;
-
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -31,7 +30,7 @@ const ProductDetail = () => {
   }
 
   return (
-    <View className="flex-1 justify-center items-center bg-white">
+    <SafeAreaView className="flex-1 justify-center items-center bg-white">
       <Image
         source={{ uri: product.ImageUrl }}
         className="w-full h-48 rounded-md mb-10"
@@ -39,7 +38,7 @@ const ProductDetail = () => {
       />
       <Divider />
       <View>
-        <Text className="text-xl font-bold">{product.Name}</Text>
+      <Text className="text-xl font-bold">{product.Name || 'Tên sản phẩm không có'}</Text>
         <View className="flex-row justify-between w-[80%] items-end">
           <Text className="text-xl text-[#3F72AF] font-bold">
             {product.ProductPrices.PriceByDate.toLocaleString()}.000 VND
@@ -53,11 +52,10 @@ const ProductDetail = () => {
           </Text>
         </View>
         <Text className='underline text-lg font-bold'>Mô tả sản phẩm:</Text>
-        <Text className="text-gray-500 mb-4">{product.Description}</Text>
-        <Text className='underline text-lg font-bold'>Bảo hành: {product.WarrantyMonths} tháng</Text>
-
+        <Text className="text-gray-500 mb-4">{product.Description || 'Mô tả không có'}</Text>
+        <Text className='underline text-lg font-bold'>Bảo hành: {product.WarrantyMonths || "Không có dữ liệu"} tháng</Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
