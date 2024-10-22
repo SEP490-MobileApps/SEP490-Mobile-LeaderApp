@@ -11,20 +11,22 @@ const signIn = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [form, setForm] = useState({
+    email: "",
+    password: "",
+  });
   
 
   const submit = async () => {
     setEmailError('');
     setPasswordError('');
 
-    if (!email) {
+    if (!form.email) {
       setEmailError('Email không được để trống');
       return;
     }
 
-    if (!password) {
+    if (!form.password) {
       setPasswordError('Mật khẩu không được để trống');
       return;
     }
@@ -32,6 +34,9 @@ const signIn = () => {
     setIsSubmitting(true);
 
     router.replace('/(tabs)/home');
+
+    setIsSubmitting(false);
+
   };
 
   return (
@@ -43,31 +48,31 @@ const signIn = () => {
       
       <FormField
         title="Địa chỉ Email"
-        value={email} 
-        handleChangeText={(e: string) => setEmail(e)} 
+        value={form.email} 
+        handleChangeText={(e: string) => setForm({ ...form, email: e })}
         placeholder="Nhập địa chỉ Email"
         otherStyles="mt-7"
         keyboardType="email-address"
       />
-      {emailError ? <Text className="text-red-500">{emailError}</Text> : null} 
+      {emailError ? <Text className="text-red-500 absolute top-72 font-bold left-4 ">{emailError}</Text> : null} 
       
       <FormField
         title="Mật khẩu"
-        value={password}
-        handleChangeText={(e: string) => setPassword(e)} 
+        value={form.password}
+        handleChangeText={(e: string) => setForm({ ...form, password: e })}
         placeholder="Nhập mật khẩu"
-        otherStyles="mt-7"
+        otherStyles="mt-14"
         secureTextEntry 
       />
-      {passwordError ? <Text className="text-red-500">{passwordError}</Text> : null} 
+      {passwordError ? <Text className="text-red-500 absolute font-bold bottom-[336px] left-4">{passwordError}</Text> : null} 
       
-      <View className="flex-row justify-between mt-5">
+      <View className="flex-row justify-between mt-14">
         <View className="flex-row ml-2">
           <Checkbox />
-          <Text className="text-lg">Ghi nhớ mật khẩu</Text>
+          <Text className="text-base">Ghi nhớ mật khẩu</Text>
         </View>
         <View className="">
-          <Text className="text-blue-700 underline text-lg"
+          <Text className="text-blue-700 underline text-base"
             onPress={() => router.push('/(auth)/forget-password')}
           >Quên mật khẩu</Text>
         </View>

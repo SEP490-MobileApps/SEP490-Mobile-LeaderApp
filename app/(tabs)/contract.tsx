@@ -1,11 +1,12 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import ContractCard from '@/components/custom_components/ContractCard'
+import RenderContractCard from '@/components/custom_components/RenderContractCard'
+import { contracts } from '@/constants/data'
 
 const contract = () => {
   return (
     <View>
-      <ContractCard/>
+      <RenderContractCard contract={contracts}/>
     </View>
   )
 }

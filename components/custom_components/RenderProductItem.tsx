@@ -2,6 +2,7 @@ import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Product } from '@/model/product';
 import { router } from 'expo-router';
+import { formatCurrency } from '@/utils/utils';
 
 interface RenderProductItemProps {
   products: Product[];
@@ -29,7 +30,7 @@ const RenderProductItem = ({ products }: RenderProductItemProps) => {
         {item.In_Of_Stock < 1 ? 'Hết hàng' : `Số lượng: ${item.In_Of_Stock}`}
       </Text>
       <Text className="text-xl text-[#3F72AF]">
-        {item.ProductPrices.PriceByDate}.000 VND
+        {formatCurrency(item.ProductPrices.PriceByDate)}
       </Text>
     </TouchableOpacity>
   );
