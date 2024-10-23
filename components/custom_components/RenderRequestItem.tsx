@@ -1,14 +1,17 @@
-import { View, Text, SectionList } from "react-native";
+import { View, Text, SectionList, RefreshControl } from "react-native";
 import React from "react";
 import { Request } from "@/model/request";
 import { formatDate } from "@/utils/utils";
 import StatusTag from "./StatusTag";
+import EmptyState from "./EmptyState";
 
 interface RenderRequestItemProps {
   sections: { title: string; data: Request[] }[];
+  refreshing: boolean;
+  onRefresh: () => void;
 }
 
-const RenderRequestItem = ({ sections }: RenderRequestItemProps) => {
+const RenderRequestItem = ({ sections, onRefresh, refreshing }: RenderRequestItemProps) => {
   const renderRequestItem = ({ item }: { item: Request }) => (
     <View className="border-b-[1px] border-black py-4 mb-5">
       <Text className="text-lg font-semibold mb-3" numberOfLines={1}>
@@ -44,6 +47,10 @@ const RenderRequestItem = ({ sections }: RenderRequestItemProps) => {
       renderItem={renderRequestItem}
       renderSectionHeader={renderSectionHeader}
       keyExtractor={(item) => item.RequestId}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+      ListEmptyComponent={<EmptyState title='Không có yêu cầu' subtitle='Không tìm yêu cầu mà bạn cần'/>}
     />
   );
 };

@@ -1,14 +1,17 @@
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, RefreshControl } from "react-native";
 import React from "react";
 import { Request } from "@/model/request";
 import { formatDate } from "@/utils/utils";
 import StatusTag from "./StatusTag";
+import EmptyState from "./EmptyState";
 
 interface RenderRequestItemProps {
   requests: Request[];
+  refreshing: boolean;
+  onRefresh: () => void;
 }
 
-const RenderNewRequestItem = ({ requests }: RenderRequestItemProps) => {
+const RenderNewRequestItem = ({ requests, onRefresh, refreshing }: RenderRequestItemProps) => {
   const renderRequestItem = ({ item }: { item: Request }) => (
     <View className="border-b-[1px] border-black py-4 mb-5">
       <Text className="text-lg font-semibold mb-3" numberOfLines={1}>
@@ -37,6 +40,11 @@ const RenderNewRequestItem = ({ requests }: RenderRequestItemProps) => {
       data={requests}
       renderItem={renderRequestItem}
       keyExtractor={(item) => item.Customer.RoomId}
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+      ListEmptyComponent={<EmptyState title='Không có yêu cầu' subtitle='Không tìm yêu cầu mà bạn cần'/>}
+
     />
   );
 };

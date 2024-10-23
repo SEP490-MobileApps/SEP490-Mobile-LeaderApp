@@ -2,12 +2,14 @@ import { Contract } from "@/model/contract";
 import { Product } from "@/model/product";
 import { Request } from "@/model/request";
 import { User } from "@/model/user";
+import { Worker } from "@/model/worker";
 
 export const user: User = {
+  AccountId: "1",
   Email: "johndoe@example.com",
   FullName: "John Doe",
-  DateOfBirth: 19900115,
-  PhoneNumber: 1234567890,
+  DateOfBirth: "2024-10-16T14:00:00Z",
+  PhoneNumber: "1234567890",
   AvatarUrl:
     "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
   Role: "Leader",
@@ -208,5 +210,44 @@ export const products: Product[] = [
     ProductPrices: {
       PriceByDate: 100,
     },
+  },
+];
+
+export const workers: Worker[] = [
+  {
+    AccountId: "1",
+    Email: "john.doe@example.com",
+    FullName: "John Doe",
+    DateOfBirth: "2024-01-10T09:15:00Z", 
+    PhoneNumber: "1234567890",  
+    AvatarUrl:
+    "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
+  },
+  {
+    AccountId: "2",
+    Email: "jane.smith@example.com",
+    FullName: "Jane Smith",
+    DateOfBirth: "2024-01-10T09:15:00Z",  
+    PhoneNumber: "9876543210",  
+    AvatarUrl:
+    "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
+  },
+  {
+    AccountId: "3",
+    Email: "mike.jones@example.com",
+    FullName: "Mike Jones",
+    DateOfBirth: "2024-01-10T09:15:00Z",  
+    PhoneNumber: "5555555555",  
+    AvatarUrl:
+    "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
+  },
+  {
+    AccountId: "4",
+    Email: "lisa.white@example.com",
+    FullName: "Lisa White",
+    DateOfBirth: "2024-01-10T09:15:00Z",
+    PhoneNumber: "4444444444",  
+    AvatarUrl:
+    "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
   },
 ];

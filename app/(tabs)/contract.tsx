@@ -1,14 +1,29 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import RenderContractCard from '@/components/custom_components/RenderContractCard'
-import { contracts } from '@/constants/data'
+import { SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
+import RenderContractCard from '@/components/custom_components/RenderContractCard';
+import { contracts } from '@/constants/data';
 
-const contract = () => {
+const Contract = () => {
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    // Simulate a data fetch or refresh logic
+    setTimeout(() => {
+      // Here you would fetch the new data if needed
+      setRefreshing(false);
+    }, 2000); // Simulate network request delay
+  };
+
   return (
-    <View>
-      <RenderContractCard contract={contracts}/>
-    </View>
-  )
-}
+    <SafeAreaView>
+      <RenderContractCard
+        contract={contracts}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      />
+    </SafeAreaView>
+  );
+};
 
-export default contract
+export default Contract;
