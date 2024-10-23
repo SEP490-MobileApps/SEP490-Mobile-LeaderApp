@@ -1,15 +1,26 @@
 import { View, Text, SafeAreaView, Image, FlatList } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { newRequests, user } from "@/constants/data";
 import Notificaton from "@/components/custom_components/Notificaton";
 import RenderNewRequestItem from "@/components/custom_components/RenderNewRequestItem";
 import { FontAwesome } from "@expo/vector-icons";
 
 const Home = () => {
-    return (
-      <SafeAreaView className="w-full h-full mt-5 px-4">
-        <View className="flex flex-row justify-between items-center pr-6 bg-[#DBE2EF] rounded-full mb-5">
-          <View className=" flex flex-row items-center ">
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    // Simulate a data fetch or refresh logic
+    setTimeout(() => {
+      // Here you would fetch the new data if needed
+      setRefreshing(false);
+    }, 2000); // Simulate network request delay
+  };
+
+  return (
+    <SafeAreaView className="w-full h-full mt-5 px-4">
+      <View className="flex flex-row justify-between items-center pr-6 bg-[#DBE2EF] rounded-full mb-5">
+        <View className=" flex flex-row items-center ">
           {user.AvatarUrl ? (
             <Image
               source={{ uri: user.AvatarUrl }}
@@ -18,18 +29,30 @@ const Home = () => {
           ) : (
             <FontAwesome name="user-circle" size={64} color="black" />
           )}
-            <Text className="text-xl font-bold ml-5">{user.FullName}</Text>
-          </View>
-          <View>
-            <Notificaton />
-          </View>
+          <Text
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            className="text-xl font-bold ml-5 w-40"
+          >
+            {user.FullName}
+          </Text>
         </View>
-  
-        <Text className="text-center font-bold text-xl">Yêu Cầu Sửa Chữa Gần Đây</Text>
-  
-        <RenderNewRequestItem requests={newRequests} />
-      </SafeAreaView>
-    );
-  };
-  
-  export default Home;
+        <View>
+          <Notificaton />
+        </View>
+      </View>
+
+      <Text className="text-center font-bold text-xl">
+        Yêu Cầu Sửa Chữa Gần Đây
+      </Text>
+
+      <RenderNewRequestItem
+        requests={newRequests}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      />
+    </SafeAreaView>
+  );
+};
+
+export default Home;

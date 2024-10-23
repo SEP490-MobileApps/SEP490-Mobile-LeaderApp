@@ -70,9 +70,6 @@ function RootLayoutNav() {
           <Stack initialRouteName="(auth)">
             <Stack.Screen name="(auth)" options={{ headerShown: false }} />
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="/productDetail/[ProductId]" options={{}} />
-            <Stack.Screen name="/contractDetail/[ContractId]" options={{}} />
-            <Stack.Screen name="modal" options={{ presentation: "modal" }} />
           </Stack>
         </GestureHandlerRootView>
       </ThemeProvider>

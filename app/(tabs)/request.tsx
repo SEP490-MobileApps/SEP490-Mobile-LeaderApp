@@ -1,15 +1,30 @@
 import { SafeAreaView } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import RenderRequestItem from "@/components/custom_components/RenderRequestItem";
 import CustomButton from "@/components/custom_components/CustomButton";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { View } from "@/components/Themed";
 import CustomSheet from "@/components/custom_components/RequestSheet";
 import { useGlobalState } from "../../context/GlobalProvider";
-import { newRequests, inProgressRequests, completedRequests, cancelledRequests } from "@/constants/data"; 
+import {
+  newRequests,
+  inProgressRequests,
+  completedRequests,
+  cancelledRequests,
+} from "@/constants/data";
 
 const Request = () => {
   const { setIsRequestOpen } = useGlobalState();
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = async () => {
+    setRefreshing(true);
+    // Simulate a data fetch or refresh logic
+    setTimeout(() => {
+      // Here you would fetch the new data if needed
+      setRefreshing(false);
+    }, 2000); // Simulate network request delay
+  };
 
   const handleOpenPress = () => {
     setIsRequestOpen(true);
@@ -48,7 +63,11 @@ const Request = () => {
       </View>
 
       {/* Passing the requests sections to RenderRequestItem */}
-      <RenderRequestItem sections={requests} />
+      <RenderRequestItem
+        sections={requests}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      />
       <CustomSheet />
     </SafeAreaView>
   );
