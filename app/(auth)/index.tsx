@@ -5,6 +5,7 @@ import CustomButton from "@/components/custom_components/CustomButton";
 import { Text, View } from "react-native";
 import { Checkbox } from "@ant-design/react-native";
 import { router } from "expo-router";
+import { AntDesign } from "@expo/vector-icons";
 
 
 const signIn = () => {
@@ -32,6 +33,7 @@ const signIn = () => {
     }
 
     setIsSubmitting(true);
+    console.log(form)
 
     router.replace('/(tabs)/home');
 
@@ -53,18 +55,19 @@ const signIn = () => {
         placeholder="Nhập địa chỉ Email"
         otherStyles="mt-7"
         keyboardType="email-address"
+        icon={<AntDesign name="mail" size={24} color="black" />}
       />
-      {emailError ? <Text className="text-red-500 absolute top-72 font-bold left-4 ">{emailError}</Text> : null} 
+      {emailError ? <Text className="text-red-500 absolute top-[270px] font-bold left-4 ">{emailError}</Text> : null} 
       
       <FormField
         title="Mật khẩu"
         value={form.password}
         handleChangeText={(e: string) => setForm({ ...form, password: e })}
         placeholder="Nhập mật khẩu"
-        otherStyles="mt-14"
+        otherStyles="mt-10"
         secureTextEntry 
       />
-      {passwordError ? <Text className="text-red-500 absolute font-bold bottom-[336px] left-4">{passwordError}</Text> : null} 
+      {passwordError ? <Text className="text-red-500 absolute font-bold bottom-[376px] left-4">{passwordError}</Text> : null} 
       
       <View className="flex-row justify-between mt-14">
         <View className="flex-row ml-2">

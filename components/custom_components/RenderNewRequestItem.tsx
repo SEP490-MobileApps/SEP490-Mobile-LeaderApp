@@ -11,7 +11,11 @@ interface RenderRequestItemProps {
   onRefresh: () => void;
 }
 
-const RenderNewRequestItem = ({ requests, onRefresh, refreshing }: RenderRequestItemProps) => {
+const RenderNewRequestItem = ({
+  requests,
+  onRefresh,
+  refreshing,
+}: RenderRequestItemProps) => {
   const renderRequestItem = ({ item }: { item: Request }) => (
     <View className="border-b-[1px] border-black py-4 mb-5">
       <Text className="text-lg font-semibold mb-3" numberOfLines={1}>
@@ -43,8 +47,17 @@ const RenderNewRequestItem = ({ requests, onRefresh, refreshing }: RenderRequest
       refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
-      ListEmptyComponent={<EmptyState title='Không có yêu cầu' subtitle='Không tìm yêu cầu mà bạn cần'/>}
-
+      ListHeaderComponent={
+        <Text className="text-center font-bold text-xl">
+          Yêu Cầu Sửa Chữa Gần Đây
+        </Text>
+      }
+      ListEmptyComponent={
+        <EmptyState
+          title="Không có yêu cầu"
+          subtitle="Không tìm yêu cầu mà bạn cần"
+        />
+      }
     />
   );
 };

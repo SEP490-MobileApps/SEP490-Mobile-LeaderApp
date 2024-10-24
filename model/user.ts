@@ -5,5 +5,6 @@ export interface User {
     DateOfBirth: string;
     PhoneNumber: string;
     AvatarUrl: string;
+    LeaderId: string;
     Role: string;
 }

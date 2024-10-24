@@ -5,4 +5,5 @@ export interface Worker {
     DateOfBirth: string;
     PhoneNumber: string;
     AvatarUrl: string;
+    isBusy: boolean
 }

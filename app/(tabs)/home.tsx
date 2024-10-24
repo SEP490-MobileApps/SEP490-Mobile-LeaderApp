@@ -41,11 +41,6 @@ const Home = () => {
           <Notificaton />
         </View>
       </View>
-
-      <Text className="text-center font-bold text-xl">
-        Yêu Cầu Sửa Chữa Gần Đây
-      </Text>
-
       <RenderNewRequestItem
         requests={newRequests}
         refreshing={refreshing}
