@@ -3,23 +3,27 @@ import React, { useState } from 'react'
 import FormField from '@/components/custom_components/FormField'
 import CustomButton from '@/components/custom_components/CustomButton'
 import { router } from 'expo-router'
+import { AntDesign } from '@expo/vector-icons'
 
 const forgetPassword = () => {
-  const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [form, setForm] = useState({
+    email: "",
+  });
 
   
   const submit = async () => {
     setEmailError('');
 
-    if (!email) {
+    if (!form.email) {
       setEmailError('Email không được để trống');
       return;
     }
 
     setIsSubmitting(true);
 
+    console.log(form)
     Alert.alert('Đã gửi link', 'Kiểm tra mail để đổi mật khẩu')
     router.back();
 
@@ -36,13 +40,15 @@ const forgetPassword = () => {
       </View>
       <FormField
         title="Địa chỉ Email"
-        value={email}
-        handleChangeText={(e: string) => setEmail(e)}
+        value={form.email}
+        handleChangeText={(e: string) => setForm({ ...form, email: e })}
         placeholder="Nhập địa chỉ Email"
         otherStyles="mt-7 "
         keyboardType="email-address"
+        icon={<AntDesign name="mail" size={24} color="black" />}
+
       />
-      {emailError ? <Text className="text-red-500 absolute top-[275px] font-bold left-4 ">{emailError}</Text> : null} 
+      {emailError ? <Text className="text-red-500 absolute top-[263px] font-bold left-4 ">{emailError}</Text> : null} 
 
             <CustomButton
             title="Xác nhận mật khẩu"

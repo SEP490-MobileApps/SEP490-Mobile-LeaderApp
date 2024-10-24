@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Image, SafeAreaView } from "react-native";
+import { View, Image, SafeAreaView } from "react-native";
 import { useLocalSearchParams, useNavigation } from "expo-router";
 import * as ImagePicker from "expo-image-picker";
 import CustomButton from "@/components/custom_components/CustomButton";
 import { Ionicons } from "@expo/vector-icons";
 import EmptyState from "@/components/custom_components/EmptyState";
+import { contracts } from "@/constants/data";
 
 const ContractImage = () => {
   const [imageUri, setImageUri] = useState<string | null>(null);
   const params = useLocalSearchParams();
   const ContractId = params.ContractId;
   const navigation = useNavigation();
+
+  const contract = contracts.find((c) => c.ContractId === ContractId);
 
   useEffect(() => {
     navigation.setOptions({
@@ -19,6 +22,9 @@ const ContractImage = () => {
       headerStyle: { backgroundColor: "#4072AF" },
       headerTintColor: "white",
     });
+    if (contract?.FileUrl) {
+      setImageUri(contract.FileUrl);
+    }
   }, [navigation]);
 
   const pickImage = async () => {
@@ -46,7 +52,7 @@ const ContractImage = () => {
   return (
     <SafeAreaView className="flex-1">
       <CustomButton
-        title="Thêm ảnh hợp đồng"
+        title={imageUri === "" ? "Thêm ảnh hợp đồng" : "Thay ảnh hợp đồng"}
         containerStyles="mt-4 mx-2"
         handlePress={pickImage}
         icon={<Ionicons name="add-circle-outline" size={24} color="white" />}

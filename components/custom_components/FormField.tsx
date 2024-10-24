@@ -25,8 +25,8 @@ const FormField = ({
 
   return (
     <View className={`space-y-2 ${otherStyles}`}>
-      <Text className="text-2xl text-black ">{title}</Text>
-      <View className="bg-[#DBE2EF] w-full h-16 px-4 bg-black-100 rounded-2xl focus:border-secondary-100 items-center flex-row">
+      <Text className="text-lg text-black ">{title}</Text>
+      <View className="bg-[#DBE2EF] w-full h-14 px-4 bg-black-100 rounded-2xl focus:border-secondary-100 items-center flex-row">
         <TextInput
           className="flex-1 text-black font-psemibold text-base"
           value={values}
@@ -36,7 +36,7 @@ const FormField = ({
           secureTextEntry={title === "Mật khẩu" && !showPassword}
           {...props}
         />
-        {title === "Mật khẩu" && (
+        {title === "Mật khẩu" ? (
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             {!showPassword ? (
               <AntDesign name="eye" size={24} color="black" />
@@ -44,7 +44,9 @@ const FormField = ({
               <Entypo name="eye-with-line" size={24} color="black" />
             )}
           </TouchableOpacity>
-        ) || title === "Địa chỉ Email" && (<AntDesign name="mail" size={24} color="black" />)}
+        ) : (
+          icon && icon 
+        )}
       </View>
     </View>
   );

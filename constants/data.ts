@@ -1,3 +1,4 @@
+import { aparmentArea } from "@/model/aparmentArea";
 import { Contract } from "@/model/contract";
 import { Product } from "@/model/product";
 import { Request } from "@/model/request";
@@ -10,9 +11,20 @@ export const user: User = {
   FullName: "John Doe",
   DateOfBirth: "2024-10-16T14:00:00Z",
   PhoneNumber: "1234567890",
+  LeaderId: "1",
   AvatarUrl:
     "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
   Role: "Leader",
+};
+
+export const apartmentArea: aparmentArea = {
+  AreaId: "A-001",
+  LeaderId: "L-123",
+  Name: "Central Apartment Complex",
+  Description: "A modern apartment complex located in the city center.",
+  Address: "123 Main St, Ho Chi Minh City",
+  ManagementCompany: "Urban Management Co.",
+  AvatarUrl:"https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg"
 };
 
 // Requests with "New Request" status
@@ -85,7 +97,7 @@ export const contracts: Contract[] = [
       "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
     },
     ContractId: "C-001",
-    FileUrl: "https://example.com/contracts/C-001.pdf",
+    FileUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDq8kt0A8Vp22DuvkNlvUXS9PCX5ktc4RoHQ&s",
     PurchaseTime: "2024-01-10T09:15:00Z",
     ServicePackagePrices: {
       PriceByDate: 100
@@ -108,7 +120,7 @@ export const contracts: Contract[] = [
       "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
     },
     ContractId: "C-002",
-    FileUrl: "https://example.com/contracts/C-002.pdf",
+    FileUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDq8kt0A8Vp22DuvkNlvUXS9PCX5ktc4RoHQ&s",
     PurchaseTime: "2024-02-15T11:30:00Z",
     ServicePackagePrices: {
       PriceByDate: 200
@@ -131,7 +143,7 @@ export const contracts: Contract[] = [
       "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
     },
     ContractId: "C-003",
-    FileUrl: "https://example.com/contracts/C-003.pdf",
+    FileUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDq8kt0A8Vp22DuvkNlvUXS9PCX5ktc4RoHQ&s",
     PurchaseTime: "2024-03-20T14:45:00Z",
     ServicePackagePrices: {
       PriceByDate: 300
@@ -153,7 +165,7 @@ export const contracts: Contract[] = [
       "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
     },
     ContractId: "C-004",
-    FileUrl: "https://example.com/contracts/C-004.pdf",
+    FileUrl: "",
     PurchaseTime: "2024-04-05T16:00:00Z",
     ServicePackagePrices: {
       PriceByDate: 400
@@ -222,6 +234,7 @@ export const workers: Worker[] = [
     PhoneNumber: "1234567890",  
     AvatarUrl:
     "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
+    isBusy: true,
   },
   {
     AccountId: "2",
@@ -231,6 +244,7 @@ export const workers: Worker[] = [
     PhoneNumber: "9876543210",  
     AvatarUrl:
     "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
+    isBusy: false,
   },
   {
     AccountId: "3",
@@ -240,6 +254,7 @@ export const workers: Worker[] = [
     PhoneNumber: "5555555555",  
     AvatarUrl:
     "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
+    isBusy: true,
   },
   {
     AccountId: "4",
@@ -249,5 +264,6 @@ export const workers: Worker[] = [
     PhoneNumber: "4444444444",  
     AvatarUrl:
     "https://static.vecteezy.com/system/resources/previews/020/765/399/non_2x/default-profile-account-unknown-icon-black-silhouette-free-vector.jpg",
+    isBusy: false,
   },
 ];
